@@ -40,4 +40,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            sh 'echo "Hello World"'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
+        }
+    }
 }
